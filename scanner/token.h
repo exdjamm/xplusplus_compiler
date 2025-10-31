@@ -13,18 +13,19 @@ enum Names
     ID,
     INTEGER_LITERAL,
     OP,
-    OP_LESS,
-    OP_GREAT,
-    OP_LEQUAL,
-    OP_GEQUAL,
     OP_PLUS,
     OP_MINUS,
     OP_PRODUCT,
     OP_DIVISION,
     OP_MOD,
     OP_ATTR,
+    REL_OP,
     OP_EQ,
     OP_NEQ,
+    OP_LESS,
+    OP_GREAT,
+    OP_LEQUAL,
+    OP_GEQUAL,
     SEP,
     SEP_LPARENTHESIS,
     SEP_RPARENTHESIS,
@@ -34,11 +35,12 @@ enum Names
     SEP_RBRACE,
     SEP_SEMICOLON,
     SEP_COMMA,
-    SEP_PEDIOD,
+    SEP_PERIOD,
     STRING_LITERAL,
     COMMENT_LINE,
     COMMENT_BLOCK,
-
+    // Palavras Reservadas
+    // RESERVED_WORD,
     CLASS,
     EXTENDS,
     INT,
@@ -53,7 +55,7 @@ enum Names
     FOR,
     NEW,
     CONSTRUCTOR,
-
+    // fim Palavras Reservadas
     END_OF_FILE
 };
 
