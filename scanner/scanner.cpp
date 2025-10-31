@@ -177,7 +177,7 @@ Scanner::nextToken()
             else if (input[pos] == '.')
             {
                 pos++;
-                tok = new Token(SEP, SEP_PEDIOD);
+                tok = new Token(SEP, SEP_PERIOD);
                 return tok;
             }
             else
