@@ -3,4 +3,5 @@
 
 /examples
 *.pdf
+*.gramm
 /.vscode
