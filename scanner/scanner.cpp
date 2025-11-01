@@ -2,13 +2,15 @@
 
 // Construtor que recebe uma string com o nome do arquivo
 // de entrada e preenche input com seu conteúdo.
-Scanner::Scanner(string input)
+Scanner::Scanner(string input /*, SymbolTable* table*/)
 {
     /*this->input = input;
     cout << "Entrada: " << input << endl << "Tamanho: "
          << input.length() << endl;*/
     pos = 0;
     line = 1;
+
+    // st = table;
 
     ifstream inputFile(input, ios::in);
     string line;
@@ -212,8 +214,7 @@ Scanner::nextToken()
             }
             else
             {
-                tok = new Token(ID, lexeme);
-                return tok;
+                state = 12;
             }
             break;
         case 3:
@@ -295,12 +296,12 @@ Scanner::nextToken()
             if (input[pos] == '=')
             {
                 pos++;
-                tok = new Token(OP, OP_LEQUAL);
+                tok = new Token(REL_OP, OP_LEQUAL);
                 return tok;
             }
             else
             {
-                tok = new Token(OP, OP_LESS);
+                tok = new Token(REL_OP, OP_LESS);
                 return tok;
             }
             break;
@@ -308,12 +309,12 @@ Scanner::nextToken()
             if (input[pos] == '=')
             {
                 pos++;
-                tok = new Token(OP, OP_GEQUAL);
+                tok = new Token(REL_OP, OP_GEQUAL);
                 return tok;
             }
             else
             {
-                tok = new Token(OP, OP_GREAT);
+                tok = new Token(REL_OP, OP_GREAT);
                 return tok;
             }
             break;
@@ -321,7 +322,7 @@ Scanner::nextToken()
             if (input[pos] == '=')
             {
                 pos++;
-                tok = new Token(OP, OP_EQ);
+                tok = new Token(REL_OP, OP_EQ);
                 return tok;
             }
             else
@@ -334,12 +335,89 @@ Scanner::nextToken()
             if (input[pos] == '=')
             {
                 pos++;
-                tok = new Token(OP, OP_NEQ);
+                tok = new Token(REL_OP, OP_NEQ);
                 return tok;
             }
             else
             {
                 lexicalError("Esperado desigualdade encontrado outro.");
+            }
+            break;
+        case 12:
+            if (lexeme.compare("class") == 0)
+            {
+                tok = new Token(CLASS);
+                return tok;
+            }
+            else if (lexeme.compare("extends") == 0)
+            {
+                tok = new Token(EXTENDS);
+                return tok;
+            }
+            else if (lexeme.compare("int") == 0)
+            {
+                tok = new Token(INT);
+                return tok;
+            }
+            else if (lexeme.compare("string") == 0)
+            {
+                tok = new Token(STRING);
+                return tok;
+            }
+            else if (lexeme.compare("break") == 0)
+            {
+                tok = new Token(BREAK);
+                return tok;
+            }
+            else if (lexeme.compare("print") == 0)
+            {
+                tok = new Token(PRINT);
+                return tok;
+            }
+            else if (lexeme.compare("read") == 0)
+            {
+                tok = new Token(READ);
+                return tok;
+            }
+            else if (lexeme.compare("return") == 0)
+            {
+                tok = new Token(RETURN);
+                return tok;
+            }
+            else if (lexeme.compare("super") == 0)
+            {
+                tok = new Token(SUPER);
+                return tok;
+            }
+            else if (lexeme.compare("if") == 0)
+            {
+                tok = new Token(IF);
+                return tok;
+            }
+            else if (lexeme.compare("else") == 0)
+            {
+                tok = new Token(ELSE);
+                return tok;
+            }
+            else if (lexeme.compare("for") == 0)
+            {
+                tok = new Token(FOR);
+                return tok;
+            }
+            else if (lexeme.compare("new") == 0)
+            {
+                tok = new Token(NEW);
+                return tok;
+            }
+            else if (lexeme.compare("constructor") == 0)
+            {
+                tok = new Token(CONSTRUCTOR);
+                return tok;
+            }
+            else
+            {
+                tok = new Token(ID, lexeme);
+                return tok;
             }
             break;
         }

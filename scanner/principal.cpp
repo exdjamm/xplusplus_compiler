@@ -65,37 +65,53 @@ int main(int argc, char *argv[])
 
 void allocVetor()
 {
-    vet = new string[29];
+    vet = new string[45];
 
     vet[0] = "UNDEF";
     vet[1] = "ID";
     vet[2] = "INTEGER_LITERAL";
     vet[3] = "OP";
-    vet[4] = "OP_LESS";
-    vet[5] = "OP_GREAT";
-    vet[6] = "OP_LEQUAL";
-    vet[7] = "OP_GEQUAL";
-    vet[8] = "OP_PLUS";
-    vet[9] = "OP_MINUS";
-    vet[10] = "OP_PRODUCT";
-    vet[11] = "OP_DIVISION";
-    vet[12] = "OP_MOD";
-    vet[13] = "OP_ATTR";
-    vet[14] = "OP_EQ";
-    vet[15] = "OP_NEQ";
-    vet[16] = "SEP";
-    vet[17] = "SEP_LPARENTHESIS";
-    vet[18] = "SEP_RPARENTHESIS";
-    vet[19] = "SEP_LBRACKET";
-    vet[20] = "SEP_RBRACKET";
-    vet[21] = "SEP_LBRACE";
-    vet[22] = "SEP_RBRACE";
-    vet[23] = "SEP_SEMICOLON";
-    vet[24] = "SEP_COMMA";
-    vet[25] = "STRING_LITERAL";
-    vet[26] = "COMMENT_LINE";
-    vet[27] = "COMMENT_BLOCK";
-    vet[28] = "END_OF_FILE";
+    vet[4] = "OP_PLUS";
+    vet[5] = "OP_MINUS";
+    vet[6] = "OP_PRODUCT";
+    vet[7] = "OP_DIVISION";
+    vet[8] = "OP_MOD";
+    vet[9] = "OP_ATTR";
+    vet[10] = "REL_OP";
+    vet[11] = "OP_EQ";
+    vet[12] = "OP_NEQ";
+    vet[13] = "OP_LESS";
+    vet[14] = "OP_GREAT";
+    vet[15] = "OP_LEQUAL";
+    vet[16] = "OP_GEQUAL";
+    vet[17] = "SEP";
+    vet[18] = "SEP_LPARENTHESIS";
+    vet[19] = "SEP_RPARENTHESIS";
+    vet[20] = "SEP_LBRACKET";
+    vet[21] = "SEP_RBRACKET";
+    vet[22] = "SEP_LBRACE";
+    vet[23] = "SEP_RBRACE";
+    vet[24] = "SEP_SEMICOLON";
+    vet[25] = "SEP_COMMA";
+    vet[26] = "SEP_PERIOD";
+    vet[27] = "STRING_LITERAL";
+    vet[28] = "COMMENT_LINE";
+    vet[29] = "COMMENT_BLOCK";
+    vet[30] = "CLASS";
+    vet[31] = "EXTENDS";
+    vet[32] = "INT";
+    vet[33] = "STRING";
+    vet[34] = "BREAK";
+    vet[35] = "PRINT";
+    vet[36] = "READ";
+    vet[37] = "RETURN";
+    vet[38] = "SUPER";
+    vet[39] = "IF";
+    vet[40] = "ELSE";
+    vet[41] = "FOR";
+    vet[42] = "NEW";
+    vet[43] = "CONSTRUCTOR";
+    vet[44] = "END_OF_FILE";
 }
 
 void freeVetor()
