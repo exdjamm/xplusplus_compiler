@@ -42,6 +42,8 @@ void Parser::program()
 {
 	if (checklToken(CLASS))
 		classList();
+
+	match(END_OF_FILE, "Erro: esperado encontrar fim de arquivo.");
 }
 
 /*
@@ -50,7 +52,7 @@ ClassList -> ClassDecl ClassList'
 void Parser::classList()
 {
 	classDecl();
-	classDecl_();
+	classList_();
 }
 
 /*
