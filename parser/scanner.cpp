@@ -58,7 +58,8 @@ Scanner::nextToken()
             }
             else if (isspace(input[pos]) || input[pos] == '\n')
             {
-                line++;
+                if (input[pos] == '\n')
+                    line++;
                 pos++;
             }
             else if (input[pos] == '"')
