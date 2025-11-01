@@ -25,6 +25,9 @@ String pode comportar-se como bloco?
 " e valido?
 
 Tem variavel line, nao e dito o que fazer com ela.
+
+Outro problema e como trabalhar palavras reservadas, aqui super e super4, um gera
+SUPER e outro ID.
 */
 
 int main(int argc, char *argv[])
