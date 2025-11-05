@@ -610,46 +610,17 @@ AtribStat' -> Expression | AllocExpression
 */
 void Parser::atribStat_()
 {
-	if (lToken->name == NEW || lToken->name == STRING || lToken->name == INT)
+	if (lToken->name == NEW || lToken->name == STRING || lToken->name == INT || lToken->name == ID)
 	{
 		allocExpression();
 	}
-	else if (lToken->attribute == OP_PLUS || lToken->attribute == OP_MINUS || lToken->attribute == SEP_LPARENTHESIS || lToken->name == STRING_LITERAL || lToken->name == INTEGER_LITERAL)
+	else if (lToken->attribute == OP_PLUS || lToken->attribute == OP_MINUS)
 	{
 		expression();
-	}
-	else if (lToken->name == ID)
-	{
-		atribStat_lValueAllocExpressionConflict();
 	}
 	else
 	{
 		error("Erro: esperado encontrar expressao ou alloc expressao.");
-	}
-}
-
-void Parser::atribStat_lValueAllocExpressionConflict()
-{
-	match(ID, "Erro: esperado encontar ID.");
-
-	if (checklToken(SEP_PERIOD))
-	{
-		lValueComp();
-	}
-	else if (checklToken(SEP_LBRACKET))
-	{
-		match(SEP_LBRACKET, "Erro: esperado '['");
-		expression();
-		match(SEP_RBRACKET, "Erro: esperado '['");
-		atribStat_lValueAllocExpressionConflict_();
-	} // lValue pode gerar ID e palavra vazia.
-}
-
-void Parser::atribStat_lValueAllocExpressionConflict_()
-{
-	if (checklToken(SEP_PERIOD) || checklToken(SEP_LBRACKET))
-	{
-		lValueComp();
 	}
 }
 

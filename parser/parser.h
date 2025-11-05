@@ -72,8 +72,8 @@ public:
 	void expressionOpt();
 	void argListOpt();
 
-	void atribStat_lValueAllocExpressionConflict();
-	void atribStat_lValueAllocExpressionConflict_();
+	// void atribStat_lValueAllocExpressionConflict();
+	// void atribStat_lValueAllocExpressionConflict_();
 	void statement_VarDelcListAtribStatConflit();
 	void statement_VarDelcListAtribStatConflit_();
 
