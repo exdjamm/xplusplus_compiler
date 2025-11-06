@@ -954,7 +954,7 @@ MethodDeclListOpt -> MethodDeclList | E
 */
 void Parser::methodDeclListOpt()
 {
-	if (lToken->name == ID || lToken->name == STRING_LITERAL || lToken->name == INTEGER_LITERAL)
+	if (lToken->name == ID || lToken->name == STRING || lToken->name == INT)
 	{
 		methodDeclList();
 	}
@@ -974,7 +974,7 @@ MethodDeclList' -> MethodDecl MethodDeclList' | E
 */
 void Parser::methodDeclList_()
 {
-	if (lToken->name == ID || lToken->name == STRING_LITERAL || lToken->name == INTEGER_LITERAL)
+	if (lToken->name == ID || lToken->name == STRING || lToken->name == INT)
 	{
 		methodDecl();
 		methodDeclList_();
