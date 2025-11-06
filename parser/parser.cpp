@@ -96,11 +96,68 @@ ClassBody -> { VarDeclListOpt ConstructDeclListOpt MethodDeclListOpt }
 */
 void Parser::classBody()
 {
-	match(SEP_LBRACE, "Erro: esperado encontrar abre chaves.");
-	varDeclListOpt();
-	constructDeclListOpt();
-	methodDeclListOpt();
-	match(SEP_RBRACE, "Erro: esperado encontrar fecha chaves.");
+	match(SEP_LBRACE, "Erro: Corpo de Classe, esperado encontrar abre chaves.");
+	// Nao e possivel com LL(1) sem modificacao, First Follow Conflit
+	if (checklToken(CONSTRUCTOR))
+	{
+		constructDeclListOpt();
+		methodDeclListOpt();
+	}
+	else if (checklToken(STRING) || checklToken(ID) || checklToken(INT))
+	{
+		classBody_conflit();
+	}
+	match(SEP_RBRACE, "Erro: Corpo de Classe, esperado encontrar fecha chaves.");
+}
+
+void Parser::classBody_conflit()
+{
+	type();
+	if (checklToken(SEP))
+	{
+		match(SEP_LBRACKET, "Erro: esperado '['.");
+		match(SEP_RBRACKET, "Erro: esperado ']'.");
+	}
+	match(ID, "Erro: esperado um identificador.");
+
+	classBody_conflit_();
+}
+
+void Parser::classBody_conflit_()
+{
+	if (checklToken(SEP_COMMA)) // varDecl
+	{
+		varDeclOpt();
+		match(SEP_SEMICOLON, "Erro: esperado ';'");
+		classBody_conflit_2();
+	}
+	else if (checklToken(SEP_SEMICOLON)) // varDecl
+	{
+		match(SEP_SEMICOLON, "Erro: esperado ';'");
+		classBody_conflit_2();
+	}
+	else if (checklToken(SEP_LPARENTHESIS)) // MethodDecl
+	{
+		methodBody();
+		methodDeclList_();
+	}
+	else
+	{
+		error("Erro: esperado encontrar declaracao de variaveis, construtor ou metodos.");
+	}
+}
+
+void Parser::classBody_conflit_2()
+{
+	if (checklToken(CONSTRUCTOR))
+	{
+		constructDeclListOpt();
+		methodDeclListOpt();
+	}
+	else if (checklToken(STRING) || checklToken(ID) || checklToken(INT))
+	{
+		classBody_conflit();
+	}
 }
 
 /*

@@ -76,6 +76,9 @@ public:
 	// void atribStat_lValueAllocExpressionConflict_();
 	void statement_VarDelcListAtribStatConflit();
 	void statement_VarDelcListAtribStatConflit_();
+	void classBody_conflit();
+	void classBody_conflit_();
+	void classBody_conflit_2();
 
 	void error(string);
 };
