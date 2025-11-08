@@ -343,6 +343,10 @@ Param -> Type ID | Type [] ID
 void Parser::param()
 {
 	type();
+	if (!(checklToken(SEP_LBRACKET) || checklToken(ID)))
+	{
+		error("Erro: esperado '[' ou identificador.");
+	}
 	if (lToken->name != ID)
 	{
 		match(SEP_LBRACKET, "Erro: esperado abre cholchetes.");
