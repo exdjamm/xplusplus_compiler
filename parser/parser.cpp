@@ -639,7 +639,7 @@ ExpressionOpt -> Expression | E
 */
 void Parser::expressionOpt()
 {
-	if (checklToken(OP_PLUS) || checklToken(OP_MINUS) || checklToken(INTEGER_LITERAL) || checklToken(STRING_LITERAL) || checklToken(SEP_LPARENTHESIS) || checklToken(ID))
+	if (checklToken(OP_PLUS) || checklToken(OP_MINUS))
 	{
 		expression();
 	}
@@ -808,18 +808,8 @@ void Parser::unaryExpression()
 		match(OP_MINUS, "Erro: esperado um operador -.");
 		factor();
 		break;
-	case SEP_LPARENTHESIS:
-		factor();
-		break;
 	default:
-		if (lToken->name == ID || lToken->name == STRING_LITERAL || lToken->name == INTEGER_LITERAL)
-		{
-			factor();
-		}
-		else
-		{
-			error("Erro: esperado expressao unaria.");
-		}
+		error("Erro: esperado + ou -.");
 		break;
 	}
 }
@@ -842,6 +832,7 @@ void Parser::factor()
 		break;
 	case ID:
 		lValue();
+		break;
 	default:
 		if (lToken->attribute == SEP_LPARENTHESIS)
 		{
@@ -851,7 +842,7 @@ void Parser::factor()
 		}
 		else
 		{
-			error("Erro: esperado string, literal_value, expressao ou inteiro");
+			error("Erro: esperado string, literal_value, '(' ou inteiro");
 		}
 
 		break;
@@ -925,7 +916,7 @@ ArgListOpt -> ArgList
 */
 void Parser::argListOpt()
 {
-	if (checklToken(OP_PLUS) || checklToken(OP_MINUS) || checklToken(INTEGER_LITERAL) || checklToken(STRING_LITERAL) || checklToken(SEP_LPARENTHESIS) || checklToken(ID))
+	if (checklToken(OP_PLUS) || checklToken(OP_MINUS))
 	{
 		argList();
 	}
