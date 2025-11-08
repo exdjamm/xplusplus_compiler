@@ -10,7 +10,7 @@ Scanner::Scanner(string input, SymbolTable *table)
     pos = 0;
     line = 1;
 
-    // st = table;
+    st = table;
 
     ifstream inputFile(input, ios::in);
     string line;
