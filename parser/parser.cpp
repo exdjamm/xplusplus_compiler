@@ -936,7 +936,7 @@ ArgList' -> , Expression ArgList' | E
 */
 void Parser::argList_()
 {
-	if (lToken->attribute == SEP_COMMA)
+	if (checklToken(SEP_COMMA))
 	{
 		match(SEP_COMMA, "Erro: esperado ','.");
 		expression();
