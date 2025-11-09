@@ -6,6 +6,8 @@ Parser::Parser(string input)
 	initSimbolTable();
 
 	scanner = new Scanner(input, globalST);
+	// scanner somente trabalha com simbolos em nivel global
+	// ou seja, externo as declaracoes do programa
 }
 
 void Parser::newTokenInit(int token, string lexeme)
@@ -60,6 +62,34 @@ void Parser::run()
 	advance();
 
 	program();
+
+	// TESTE DA TABELA DE SÍMBOLOS
+	/*
+	currentST = new SymbolTable(currentST);
+	currentST = new SymbolTable(currentST);
+	if (currentST->add(new STEntry(new Token(ID), "bianca")))
+		cout << "Adição de bianca deu certo" << endl;
+	else
+		cout << "Adição de bianca não deu certo" << endl;
+
+	STEntry* obj = currentST->get("bianca");
+
+	if (obj)
+		cout << "Encontrei o símbolo " << obj->lexeme << endl;
+	else
+		cout << "Não encontrei o símbolo buscado" << endl;
+
+	//Fim do escopo
+	currentST = currentST->getParent();
+
+	obj = currentST->get("bianca");
+
+	if (obj)
+		cout << "Encontrei o símbolo " << obj->lexeme << endl;
+	else
+		cout << "Não encontrei o símbolo buscado" << endl;*/
+
+	/////////////////////////////
 
 	cout << "Compilação encerrada com sucesso!\n";
 }

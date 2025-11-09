@@ -345,7 +345,7 @@ Scanner::nextToken()
             }
             break;
         case 12:
-
+            // como as palavras reservadas ja estao em ST, nao podem ser regravadas
             STEntry *obj = st->get(lexeme);
             if (!obj)
                 tok = new Token(ID, lexeme);
